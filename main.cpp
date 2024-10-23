@@ -1,50 +1,35 @@
-//
-//  main.cpp
-//  ClinicManagementSystem
-//
-//  Created by Navin Maini on 22/09/24.
-//
-
 #include <iostream>
 
 using namespace std;
-/*
-struct Patient{
-    int age;
-    int phone;
-    string name;
-    int Criticality;
-    string reasonOfVisit;
-};
 
-class Doctor{
+class Truck{
+private:
+    int id, capacity, speed;
 public:
-    int Doctor_id;
-    string Dname;
-    double experience;
+    // use traveling salesman
+    Truck(int capacity, int id){
+        this->capacity = capacity;
+        this->id = id;
+        this->speed = 1;
+    }
     
-    Doctor(int id, string name, double _experience){
-        Doctor_id = id;
-        Dname = name;
-        experience = _experience;
+    int getCapacity(){
+        return capacity;
     }
 };
 
-class EmergencyDoctor : Doctor {
+class SuperTruck : Truck{
+private:
+    int id, capacity, speed;
 public:
-    float SuccessRate;
-    
-};
-
-class Hospital{
-public:
-    int doctors[20];
-    Doctor *doctor = new Doctor(1,"Amresh Aggarwal",6);
-};
-*/
-class Truck{
-    int id, location_id, capacity;
     // use traveling salesman
+    SuperTruck(int capacity, int id, int speed) : Truck(int capacity, int id){
+        this->speed = speed;
+    }
+    
+    int getCapacity(){
+        return capacity;
+    }
 };
 
 class Schedule{
@@ -76,7 +61,13 @@ public:
 
 class Machine{
 public:
-    string name;
+    string name, work;
+    int productionCapacity;
+    Machine(string name, string work, int prod){
+        this->name = name;
+        this->work = work;
+        productionCapacity = prod;
+    }
     Schedule *s;
     Machine(string name){
         this->name = name;
